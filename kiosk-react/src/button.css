@@ -1,0 +1,58 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-button {
+    background-color: #26A653;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid #26A653;
+}
+
+.white-button {
+    background-color: white;
+    color: #26A653;
+    border-radius: 5px;
+    border: 2px solid #26A653;
+}
+
+.login-button {
+    width: 360px;
+    height: 62px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.signin-button {
+    width: 360px;
+    height: 62px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.number-button {
+    width: 62px;
+    height: 62px;
+    background: #26A653;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 15px;
+}
+
+.clear-button{
+    width: 62px;
+    height: 62px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: 700;
+    border: none;
+    background-color: #F5F5F5;
+    margin: 15px;
+}
