@@ -33,6 +33,7 @@ function Login() {
 
     return (
         <body>
+            <div className='login'>
             <div className="login-grid-container">
                 <header className='login-grid-title'>
                     <span>옷깃</span>
@@ -41,9 +42,9 @@ function Login() {
                     <div className="login-form">
                         <input
                             type="tel"
-                            placeholder="휴대폰 번호를 입력하세요"
+                            placeholder="휴대폰 번호를 입력해주세요"
                             value={phoneNumber}
-                            className='phone-number-input'
+                            className='login-phone-number-input'
                         />
                         <button className="login-button green-button" onClick={handleLogin}>
                             로그인
@@ -69,6 +70,7 @@ function Login() {
                     ))}
                     <div><button className='clear-button' onClick={handleClearClick}>&larr;</button></div>
                 </div>
+            </div>
             </div>
         </body>
     )
