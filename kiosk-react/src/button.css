@@ -97,3 +97,46 @@
     font-size: 25px;
     font-weight: 700;
 }
+
+
+/* --- stamp --- */
+
+.stamp-check-button,
+.donation-button {
+    width: 212px;
+    height: 138px;
+    color: #FFF;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.stamp-check-button{
+    margin-right: 53px;
+}
+
+.stamp
+.before-button{
+    position: fixed;
+    width: 108px;
+    height: 62px;
+    background-color: #585858;
+    color: #FFF;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    left: 80px;
+    bottom: 80px;
+}
+
+.donation-change-button,
+.discount-change-button{
+    width: 450px;
+    height: 62px;
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
