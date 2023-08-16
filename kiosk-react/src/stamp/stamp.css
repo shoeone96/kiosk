@@ -1,0 +1,68 @@
+.stamp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    min-height: 100vh;
+}
+.stamp-word{
+    margin-bottom: 65px;
+}
+.stamp-title{
+    display: inline-block;
+    color: #26A653;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.stamp-explanation{
+    color: #585858;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.stamp-current{
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 65px;
+}
+
+.stamp-usage{
+    display: flex;
+    flex-direction: column;
+}
+
+.stamp-yes,
+.stamp-no {
+    width: 59px;
+    height: 59px;
+    border-radius: 50%;
+    margin: 8px;
+}
+
+.stamp-yes {
+    background-color: #26A653;
+}
+
+.stamp-no {
+    background-color: #F1F1F1;
+}
+
+.volunteer-input {
+    width: 450px;
+    height: 62px;
+    background: #F1F1F1;
+    border-radius: 5px;
+    border: none;
+    color: #585858;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
