@@ -6,6 +6,7 @@ import Login from './login/login';
 import Signin from './signin/signin';
 import Main from './main/main';
 import Stamp from './stamp/stamp';
+import End from './end/end'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/signin" element={<Signin />} />
       <Route path="/main" element={<Main />} />
       <Route path="/stamp" element={<Stamp />} />
+      <Route path="/end" element={<End />} />
     </Routes>
   );
 }
