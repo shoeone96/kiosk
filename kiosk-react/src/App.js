@@ -10,6 +10,7 @@ import End from './end/end'
 import Donation from './donation/donation'
 import TimeReward from './timeReward/timeReward'
 import DiscountReward from './discountReward/discountReward'
+import Input from './input/input'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/donation" element={<Donation />} />
       <Route path="/time-reward" element={<TimeReward />} />
       <Route path="/discount-reward" element={<DiscountReward />} />
+      <Route path="/input" element={<Input />} />
     </Routes>
   );
 }

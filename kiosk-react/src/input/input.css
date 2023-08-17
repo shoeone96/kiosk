@@ -1,0 +1,87 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.input-grid-container{
+    display: grid;
+    grid-template: 180px 350px / 300px 400px;
+    grid-template-areas: 
+        "h h"
+        "l r"
+    ;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+.title{
+    background-color:coral;
+    grid-area: h;
+    color: #26A653;
+    font-size: 40px;   
+    font-weight: 700;
+}
+
+.donation-count{
+    grid-area: l;
+    background-color: darkorange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donation-product{
+    width: 260px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.donation-container{
+    grid-area: r;
+    background-color: tomato;
+    display: flex;
+    justify-content: center;
+}
+
+.input-space{
+    width: 160px;
+}
+
+.container{
+    width: 132px;
+    height: 284px;
+    background-color: #26A653;
+    margin: 0 1px 0 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-entrance{
+    width: 108px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #FFF;
+    margin: 13px 0 10px 0;
+}
+
+.input-size{
+    color: #FFF;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.total-count {
+    text-align: right;
+}
