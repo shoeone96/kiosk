@@ -8,16 +8,20 @@ import Main from './main/main';
 import Stamp from './stamp/stamp';
 import End from './end/end'
 import Donation from './donation/donation'
+import TimeReward from './timeReward/timeReward'
+import DiscountReward from './discountReward/discountReward'
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/main" element={<Main />} />
       <Route path="/stamp" element={<Stamp />} />
       <Route path="/end" element={<End />} />
       <Route path="/donation" element={<Donation />} />
+      <Route path="/time-reward" element={<TimeReward />} />
+      <Route path="/discount-reward" element={<DiscountReward />} />
     </Routes>
   );
 }

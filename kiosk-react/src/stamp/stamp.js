@@ -7,6 +7,11 @@ function Stamp() {
     //TODO: 추후 서버에서 받아오는 스탬프 개수로 변경 예정
     const num = 3;
     const [volunteerId, setVolunteerId] = useState("")
+    const history = useNavigate();
+
+    function changeToTime(){
+        history("/time-reward");
+    }
 
     return (
         <>
@@ -36,8 +41,10 @@ function Stamp() {
                             onChange={(e) => setVolunteerId(e.target.value)} // 값을 업데이트
                             className='volunteer-input'
                         />
-                        <button className='green-button donation-change-button'>봉사 점수로 스탬프 변환하기</button>
-                        <button className='green-button discount-change-button'>업사이클링 할인 코드 스탬프 변환하기</button>
+                        <button onClick={() => changeToTime()} className='green-button donation-change-button'>봉사 점수로 스탬프 변환하기</button>
+                        <Link to="/discount-reward">
+                            <button className='green-button discount-change-button'>업사이클링 할인 코드 스탬프 변환하기</button>
+                        </Link>
                     </section>
                     <Link to="/main">
                         <button className='before-button'> 뒤로</button>
