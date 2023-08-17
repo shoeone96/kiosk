@@ -115,7 +115,7 @@
     margin-right: 53px;
 }
 
-.stamp
+.stamp,
 .before-button{
     position: fixed;
     width: 108px;
@@ -131,6 +131,21 @@
     bottom: 80px;
 }
 
+.next-button{
+    position: fixed;
+    width: 108px;
+    height: 62px;
+    background-color: #585858;
+    color: #FFF;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    right: 80px;
+    bottom: 80px;
+}
+
 .donation-change-button,
 .discount-change-button{
     width: 450px;
@@ -139,4 +154,31 @@
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 10px;
+}
+
+.category-button{
+    width: 171px;
+    height: 62px;
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.self-input-category-button{
+    width: 550px;
+    height: 62px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.self-category-add-button{
+    height: 62px;
+    width: 67px;
+    border: none;
+    background-color: #26A653;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
 }
