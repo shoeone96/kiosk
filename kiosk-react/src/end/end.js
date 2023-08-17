@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react';
 import './end.css'
 import '../button.css'
 
@@ -6,9 +7,20 @@ import '../button.css'
 function End() {
 
     const history = useNavigate();
+    
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            history.push('/');
+        }, 5000); 
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [history]);
+    
 
     function goHome(){
-        history("/login")
+        history("/")
     }
 
     return (
