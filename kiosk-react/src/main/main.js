@@ -17,7 +17,9 @@ function Main() {
                     <Link to="/stamp">
                         <button className='green-button stamp-check-button'>보유 스탬프 확인</button>
                     </Link>
-                    <button className='green-button donation-button'>의류 기부하기</button>
+                    <Link to="/donation">
+                        <button className='green-button donation-button'>의류 기부하기</button>
+                    </Link>
                 </section>
             </div>
         </body>

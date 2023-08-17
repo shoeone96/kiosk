@@ -46,9 +46,11 @@ function Login() {
                             value={phoneNumber}
                             className='login-phone-number-input'
                         />
-                        <button className="login-button green-button" onClick={handleLogin}>
-                            로그인
-                        </button>
+                        <Link to="/main">
+                            <button className="login-button green-button" onClick={handleLogin}>
+                                로그인
+                            </button>
+                        </Link>
                         <Link to="/signin">
                             <button className="signin-button white-button" onClick={handleSignUp}>
                                 회원 가입

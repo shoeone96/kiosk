@@ -39,7 +39,9 @@ function Stamp() {
                         <button className='green-button donation-change-button'>봉사 점수로 스탬프 변환하기</button>
                         <button className='green-button discount-change-button'>업사이클링 할인 코드 스탬프 변환하기</button>
                     </section>
-                    <button className='before-button'> 뒤로</button>
+                    <Link to="/main">
+                        <button className='before-button'> 뒤로</button>
+                    </Link>
                 </div>
             </body>
 
