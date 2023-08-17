@@ -7,6 +7,7 @@ import Signin from './signin/signin';
 import Main from './main/main';
 import Stamp from './stamp/stamp';
 import End from './end/end'
+import Donation from './donation/donation'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/main" element={<Main />} />
       <Route path="/stamp" element={<Stamp />} />
       <Route path="/end" element={<End />} />
+      <Route path="/donation" element={<Donation />} />
     </Routes>
   );
 }
