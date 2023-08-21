@@ -1,0 +1,59 @@
+body > .login{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-grid-container {
+    display: grid;
+    grid-template: 180px 350px / 450px 350px;
+    grid-template-areas: 
+        "h h"
+        "l r"
+    ;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+.login-grid-title{
+    grid-area: h;
+    height: 120px;
+    text-align: center;
+    color: #26A653;
+    text-align: center;
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.login-grid-left{
+    grid-area: l;
+}
+
+.login-grid-right{
+    grid-area: r;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow:visible;
+}
+
+.login-phone-number-input {
+    background: #F1F1F1;
+    border-radius: 5px;
+    border: none;
+    width: 360px;
+    height: 62px;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 27px;
+    margin-top: 15px;
+}
+
+.no-number{
+    width: 62px;
+    height: 62px;
+    margin: 15px;
+    visibility: hidden;
+}

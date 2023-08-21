@@ -1,0 +1,36 @@
+.discount-reward{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.message{
+    color: #26A653;
+    font-size: 40px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.message-detail{
+    color: #585858;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.coupon{
+    width: 480px;
+    height: 58px;
+    background-color: #26A653;
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 67px;
+}

@@ -1,0 +1,15 @@
+.end{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.end-sentence {
+    font-weight: 700;
+    font-size: 40px;
+    align-items: center;
+    text-align: center;
+    color: #26A653;
+}
