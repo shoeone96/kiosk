@@ -10,7 +10,7 @@ function End() {
     
     useEffect(() => {
         const timeout = setTimeout(() => {
-            history.push('/');
+            history("/");
         }, 5000); 
 
         return () => {
