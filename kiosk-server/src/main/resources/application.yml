@@ -7,7 +7,6 @@ spring:
     username: ${DATASOURCE_USERNAME}
     password: ${DATASOURCE_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8??
-    # driver-class-name: com.mysql.jdbc.Driver # mysql 5??
   sql:
     init:
       platform: mysql
@@ -16,11 +15,14 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
 jwt:
-  key: {JWT_KEY}
+  secret-key: ${JWT_KEY}
+  #    //30days
+  token:
+    expired-time-ms: ${EXPIRATION_TIME}
 
 
