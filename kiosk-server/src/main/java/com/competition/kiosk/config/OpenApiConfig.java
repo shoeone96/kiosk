@@ -11,9 +11,9 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI openAPI() {
         Info info = new Info()
-                .title("Delivery_Service API Document")
+                .title("kiosk API Document")
                 .version("v0.0.1")
-                .description("배달 서비스 API 명세서입니다.");
+                .description("kiosk api 명세서");
         return new OpenAPI()
                 .components(new Components())
                 .info(info);
