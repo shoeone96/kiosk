@@ -1,5 +1,6 @@
 package com.competition.kiosk.config;
 
+import com.competition.kiosk.exception.ErrorCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
@@ -7,18 +8,19 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 public class BaseException extends RuntimeException {
-    private BaseResponseStatus status;
-    private HttpStatus httpStatus;
+    private ErrorCode errorCode;
     private String message;
 
-    public BaseException(BaseResponseStatus status, String message){
-        this.status = status;
-        this.httpStatus = status.getStatus();
-        this.message = message;
+    public BaseException(ErrorCode errorCode){
+        this.errorCode = errorCode;
+        this.message = null;
     }
 
-    public BaseException(BaseResponseStatus status){
-        this.status = status;
-        this.httpStatus = status.getStatus();
+    @Override
+    public String getMessage() {
+        if(message == null){
+            return errorCode.getMessage();
+        }
+        return String.format("%s, %s", errorCode.getMessage(), message);
     }
 }
