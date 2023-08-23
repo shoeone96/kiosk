@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './main.css'
 import '../button.css'
 
 
 function Main() {
-    const [username] =useState("hi");
+    const [username] =useState("동국대학교");
+    const history = useNavigate();
+    function logout(){
+        history("/");
+    }
 
     return (
         <body>
@@ -21,6 +25,9 @@ function Main() {
                         <button className='green-button donation-button'>의류 기부하기</button>
                     </Link>
                 </section>
+                <div>
+                    <button onClick={logout}className='white-button logout-button'>로그아웃</button>
+                </div>
             </div>
         </body>
     )
