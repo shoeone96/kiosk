@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import '../button.css'
 import './donation.css'
-import { addProduct, removeProduct, updateProduct, plusCount, minusCount } from '../store/store'
+import { addProduct, removeProduct, updateProduct, plusCount, minusCount } from '../store/store';
+import { ReactComponent as Plus } from './add_black_24dp.svg';
+import { ReactComponent as Minus } from './remove_black_24dp.svg';
+import { ReactComponent as Cancel } from './cancel.svg';
 
 function Donation() {
     const prodcutCategory = [{ id: 1, name: '반소매 상의' }, { id: 2, name: '긴소매 상의' }, { id: 3, name: '반바지' }, { id: 4, name: '긴바지' }, { id: 5, name: '외투' }, { id: 6, name: '기타' }];
@@ -34,16 +37,21 @@ function Donation() {
                     <section className='donation-products'>
                         {products.map((product) => (
                             <div className='selected-product'>
-                                <span className='selected-product-left-component'>
-                                    <button onClick={() => dispatch(removeProduct(product.id))}>x</button>
-                                    {product.name}
-                                </span>
-                                <div className='space'></div>
-                                <span className='selected-product-right-component'>
-                                    <button onClick={() => dispatch(minusCount(product.id))}>-</button>
-                                    <span className='product-count'>{product.count}</span>
-                                    <button onClick={() => dispatch(plusCount(product.id))}>+</button>
-                                </span>
+                                <div className='selected-product-left-component'>
+                                    <Cancel onClick={() => dispatch(removeProduct(product.id))}></Cancel>
+                                    <span className='product-name'>{product.name}</span>
+                                </div>
+                                <div className='selected-product-right-component'>
+                                    <div>
+                                        <Minus onClick={() => dispatch(minusCount(product.id))}></Minus>
+                                    </div>
+                                    <div className='product-count'>
+                                        <span>{product.count}</span>
+                                    </div>
+                                    <div>
+                                        <Plus onClick={() => dispatch(plusCount(product.id))}></Plus>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </section>
