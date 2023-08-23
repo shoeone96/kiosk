@@ -10,7 +10,7 @@
 
 .donation-grid-container{
     display: grid;
-    grid-template: 190px 400px / 600px 400px;
+    grid-template: 150px 400px / 600px 400px;
     grid-template-areas: 
         "h h"
         "l r"
@@ -44,10 +44,10 @@
     border-radius: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
     border: none;
     vertical-align: middle;
 }
-
 
 .selected-product-left-component button{
     text-align: left;
@@ -60,16 +60,19 @@
 
 
 .selected-product-left-component{
-    display: inline-block;
+    display: flex;
+    align-items: center;
     text-align: left;
-    width: 340px;
+    width: 300px;
     font-size: 20px;
     font-weight: 400;   
     border: none;
 }
 
 .selected-product-right-component{
+    display: flex;
     font-size: 20px;
+    align-items: center;
 }
 .selected-product-right-component button{
     text-align: right;
@@ -78,7 +81,11 @@
 }
 
 .product-count{
-    margin: 0 10px 0 10px;
+    margin: 0 2px 0 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
 }
 .donation-categories{
     display: flex;

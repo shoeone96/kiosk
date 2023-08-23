@@ -11,11 +11,13 @@ import Donation from './donation/donation'
 import TimeReward from './timeReward/timeReward'
 import DiscountReward from './discountReward/discountReward'
 import Input from './input/input'
+import Home from './home/home'
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/main" element={<Main />} />
       <Route path="/stamp" element={<Stamp />} />
