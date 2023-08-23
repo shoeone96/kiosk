@@ -10,12 +10,11 @@
 .stamp-word{
     margin-bottom: 65px;
 }
-.stamp-title{
-    display: inline-block;
-    color: #26A653;
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 12px;
+
+.stamp-now{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .stamp-explanation{
@@ -26,12 +25,17 @@
 
 .stamp-current{
     display: flex;
-    width: 400px;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     margin-bottom: 65px;
 }
-
+.stamp-title{
+    color: #000;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
 .stamp-usage{
     display: flex;
     flex-direction: column;
@@ -66,3 +70,28 @@
     margin-bottom: 10px;
 }
 
+.arrow-space{
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+.stamp-cnt{
+    width: 142px;
+    height: 56px;
+    background-color: #26A653;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 22px;
+    margin-right: 22px;
+}
+
+.change-stamp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
