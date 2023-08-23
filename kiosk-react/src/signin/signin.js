@@ -5,6 +5,7 @@ import './signin.css'
 
 function Signin() {
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [selectedSize, setSelectedSize] = useState(null);
     const handleSizeClick = (size) => {
@@ -26,6 +27,9 @@ function Signin() {
     const handleChangePhoneNumber = (e) => {
         const formattedValue = formatPhoneNumber(e.target.value);
         setPhoneNumber(formattedValue);
+    };
+    const handlePassword = (e) => {
+        setPassword(e);
     };
 
     const signin = () => {
@@ -57,8 +61,15 @@ function Signin() {
                             value={phoneNumber}
                             className='signin-phone-number-input'
                         />
+                        <input
+                            type="text"
+                            placeholder="비밀번호를 입력해주세요"
+                            onChange={handlePassword} // 값을 업데이트
+                            value={password}
+                            className='signin-phone-number-input'
+                        />
                         <div className='size-choose'>
-                            <div className='size-title'>사이즈</div>
+                            <div className='size-title'>주로 입는 의류 사이즈</div>
                             <button
                                 className={`size-button ${selectedSize === 'S' ? 'selected' : ''}`}
                                 onClick={() => handleSizeClick('S')}>
