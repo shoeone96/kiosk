@@ -19,20 +19,27 @@ function Input() {
                         조명이 켜진 투입구에 의류를 넣어주세요.
                     </div>
                     <div className='donation-count'>
+                        <div className='product-arragement'>
                         {products.map((product) => (
                             <div className='donation-product'  key={product.id}>
-                                <span>{product.name}</span>
+                                <div className='product-name'>
+                                    <span>{product.name}</span>
+                                </div>
                                 <div className='input-space'></div>
-                                <span>{product.count}</span>
+                                <div className='product-count'>
+                                    <span>{product.count}</span>
+                                </div>
                             </div>
                         ))}
-                        <span className='total-count'>총 {totalCount}벌</span>
+                        </div>
+                        <div className='total-count'>
+                            <span>총 {totalCount}벌</span>
+                        </div>                        
                     </div>
                     <div className='donation-container'>
                         {sizes.map((size) => (
                             <div className='container'>
                                 <div className='input-entrance'></div>
-                                <span className='input-size'>{size}</span>
                             </div>
                         ))}
                     </div>
@@ -41,7 +48,9 @@ function Input() {
             <Link to="/donation">
                 <button className='before-button'>이전</button>
             </Link>
-            <button className='next-button'>다음</button>
+            <Link to="/end">
+                <button className='next-button'>확인</button>
+            </Link>
         </body>
     )
 }
