@@ -29,7 +29,7 @@ function Signin() {
         setPhoneNumber(formattedValue);
     };
     const handlePassword = (e) => {
-        setPassword(e);
+        setPassword(prevPassword => prevPassword + e);
     };
 
     const signin = () => {
@@ -62,9 +62,9 @@ function Signin() {
                             className='signin-phone-number-input'
                         />
                         <input
-                            type="text"
+                            type="password"
                             placeholder="비밀번호를 입력해주세요"
-                            onChange={handlePassword} // 값을 업데이트
+                            onChange={(e) => setPassword(e.target.value)} // 값을 업데이트
                             value={password}
                             className='signin-phone-number-input'
                         />
