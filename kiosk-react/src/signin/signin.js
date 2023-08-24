@@ -28,17 +28,25 @@ function Signin() {
         const formattedValue = formatPhoneNumber(e.target.value);
         setPhoneNumber(formattedValue);
     };
-    const handlePassword = (e) => {
-        setPassword(prevPassword => prevPassword + e);
+    const handlePassword = (event) => {
+        const newPassword = event.target.value;
+        setPassword(newPassword);
     };
 
     const signin = () => {
-        const phoneNumberWithoutDash = phoneNumber.replace(/-/g, ''); // '-' 제거
-        const validPhoneNumber = phoneNumberWithoutDash.substring(0, 11); // 최대 11자리로 고정
-        alert("회원가입이 완료되었습니다.")
-        history("/login")
-        // TODO: 서버 전송 시 작성 로직
+        
+        if (password.length !== 4 || !/^\d{4}$/.test(password)) {
+            alert("비밀번호는 4자리 숫자로 입력해주세요.");
+            setPassword("");
+        } else {
+            const phoneNumberWithoutDash = phoneNumber.replace(/-/g, ''); // '-' 제거
+            const validPhoneNumber = phoneNumberWithoutDash.substring(0, 11); // 최대 11자리로 고정
+            alert("회원가입이 완료되었습니다.")
+            history("/login")
+            // TODO: 서버 전송 시 작성 로직
+        }
     };
+
     return (
         <>
             <body>
@@ -51,20 +59,20 @@ function Signin() {
                             type="text"
                             placeholder="이름을 입력해주세요"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)} // 값을 업데이트
+                            onChange={(e) => setUsername(e.target.value)} 
                             className='name-input'
                         />
                         <input
                             type="tel"
                             placeholder="휴대폰 번호를 입력해주세요"
-                            onChange={handleChangePhoneNumber} // 값을 업데이트
+                            onChange={handleChangePhoneNumber}
                             value={phoneNumber}
                             className='signin-phone-number-input'
                         />
                         <input
                             type="password"
-                            placeholder="비밀번호를 입력해주세요"
-                            onChange={(e) => setPassword(e.target.value)} // 값을 업데이트
+                            placeholder="4자리 숫자 비밀번호를 입력해주세요"
+                            onChange={handlePassword} 
                             value={password}
                             className='signin-phone-number-input'
                         />
