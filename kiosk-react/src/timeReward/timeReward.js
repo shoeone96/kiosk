@@ -10,7 +10,7 @@ function TimeReward() {
     
     useEffect(() => {
         const timeout = setTimeout(() => {
-            history.push('/end');
+            history('/end');
         }, 5000); 
 
         return () => {
@@ -24,7 +24,7 @@ function TimeReward() {
     return (
         <body onClick={goEnd}>
             <section className='time-reward'>
-                <span className='message'>스탬프 변환 신청 완료</span><br/>
+                <span className='message'>스탬프 변환 신청 완료</span>
                 <span className='message-detail'>1365 홈페이지 반영에는 최대 일주일이 소요될 수 있습니다.</span>
             </section>
         </body>
