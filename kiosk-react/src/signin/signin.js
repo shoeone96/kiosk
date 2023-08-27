@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import '../button.css'
 import './signin.css'
+import axios from 'axios';
 
 function Signin() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
+    const [nickname, setNickname] = useState('');
     const [selectedSize, setSelectedSize] = useState(null);
+    const [agreementChecked, setAgreementChecked] = useState(false);
+
+    const handleAgreementChange = (event) => {
+        setAgreementChecked(event.target.checked);
+    };
+
     const handleSizeClick = (size) => {
         setSelectedSize(size === selectedSize ? null : size);
     };
@@ -34,13 +41,23 @@ function Signin() {
     };
 
     const signin = () => {
-        
-        if (password.length !== 4 || !/^\d{4}$/.test(password)) {
+        if (!agreementChecked) {
+            alert("개인정보 취급 방침에 동의해주십시오")
+        } else if (password.length !== 4 || !/^\d{4}$/.test(password)) {
             alert("비밀번호는 4자리 숫자로 입력해주세요.");
             setPassword("");
         } else {
-            const phoneNumberWithoutDash = phoneNumber.replace(/-/g, ''); // '-' 제거
-            const validPhoneNumber = phoneNumberWithoutDash.substring(0, 11); // 최대 11자리로 고정
+            // const phoneNumberWithoutDash = phoneNumber.replace(/-/g, ''); // '-' 제거
+            // const validPhoneNumber = phoneNumberWithoutDash.substring(0, 11); // 최대 11자리로 고정
+            // axios.post("http://localhost:8080/api/v1/users/join",
+            //     {
+            //         nickname: nickname,
+            //         password: password,
+            //         phoneNumber: validPhoneNumber,
+            //         size: selectedSize
+            //     })
+            //     .then(console.log("요청에 성공했습니다."));
+
             alert("회원가입이 완료되었습니다.")
             history("/login")
             // TODO: 서버 전송 시 작성 로직
@@ -57,9 +74,9 @@ function Signin() {
                     <section className='signin-form'>
                         <input
                             type="text"
-                            placeholder="이름을 입력해주세요"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)} 
+                            placeholder="사용하실 닉네임을 입력해주세요"
+                            value={nickname}
+                            onChange={(e) => setNickname(e.target.value)}
                             className='name-input'
                         />
                         <input
@@ -72,30 +89,18 @@ function Signin() {
                         <input
                             type="password"
                             placeholder="4자리 숫자 비밀번호를 입력해주세요"
-                            onChange={handlePassword} 
+                            onChange={handlePassword}
                             value={password}
                             className='signin-phone-number-input'
                         />
-                        <div className='size-choose'>
-                            <div className='size-title'>주로 입는 의류 사이즈</div>
-                            <button
-                                className={`size-button ${selectedSize === 'S' ? 'selected' : ''}`}
-                                onClick={() => handleSizeClick('S')}>
-                                S
-                            </button>
-                            <button
-                                className={`size-button ${selectedSize === 'M' ? 'selected' : ''}`}
-                                onClick={() => handleSizeClick('M')}>
-                                M
-                            </button>
-                            <button
-                                className={`size-button ${selectedSize === 'L' ? 'selected' : ''}`}
-                                onClick={() => handleSizeClick('L')}>
-                                L
-                            </button>
-                        </div>
                         <div className='personal-information'>
-                            <input type="checkbox" id="checkbox" name="agreement" className='checkbox-agreement' />
+                            <input type="checkbox"
+                                id="checkbox"
+                                name="agreement"
+                                className='checkbox-agreement'
+                                checked={agreementChecked}
+                                onChange={handleAgreementChange}
+                            />
                             <span>개인정보 취급 방침 동의</span>
                         </div>
                     </section>
@@ -103,7 +108,7 @@ function Signin() {
                         <Link to="/login">
                             <button className='white-button signin-cancel-button'>취소</button>
                         </Link>
-                        <button className='green-button signin-confirm-button' onClick={signin}>회원가입</button>
+                        <button className='green-button signin-confirm-button' onClick={signin} >회원가입</button>
                     </section>
                 </div>
             </body>

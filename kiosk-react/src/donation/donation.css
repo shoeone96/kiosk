@@ -10,7 +10,7 @@
 
 .donation-grid-container{
     display: grid;
-    grid-template: 150px 400px / 600px 400px;
+    grid-template: 150px 400px / 500px 400px;
     grid-template-areas: 
         "h h"
         "l r"
