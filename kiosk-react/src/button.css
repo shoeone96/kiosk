@@ -66,30 +66,6 @@
     margin: 15px;
 }
 
-.size-button {
-    width: 57px;
-    height: 57px;
-    border-radius: 50%;
-    color: #585858;
-    font-size: 25px;
-    font-weight: 700;
-    background-color: #F1F1F1;
-    border: none;
-    margin: 0 11px 0 11px;
-}
-
-.size-button.selected {
-    width: 57px;
-    height: 57px;
-    border-radius: 50%;
-    color: #F1F1F1;
-    font-size: 25px;
-    font-weight: 700;
-    background-color: #585858;
-    border: none;
-    margin: 0 11px 0 11px;
-}
-
 .signin-cancel-button {
     width: 171px;
     height: 62px;
@@ -165,10 +141,10 @@
 }
 
 .category-button{
-    width: 232px;
+    width: 347px;
     height: 84px;
     color: #FFF;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     margin: 10px;
 }

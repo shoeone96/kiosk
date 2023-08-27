@@ -9,7 +9,7 @@ import { ReactComponent as Minus } from './remove_black_24dp.svg';
 import { ReactComponent as Cancel } from './cancel.svg';
 
 function Donation() {
-    const prodcutCategory = [{ id: 1, name: '반소매 상의' }, { id: 2, name: '긴소매 상의' }, { id: 3, name: '반바지' }, { id: 4, name: '긴바지' }, { id: 5, name: '외투' }, { id: 6, name: '기타' }];
+    const prodcutCategory = [{ id: 1, name: '상의' }, { id: 2, name: '하의' }, { id: 3, name: '세트 의류' }];
     let products = useSelector((state) => state.products);
     let dispatch = useDispatch();
 
