@@ -32,23 +32,6 @@ body>.signin {
     margin-bottom: 10px;
 }
 
-.size-choose {
-    text-align: center;
-}
-
-.size-title {
-    color: #585858;
-    text-align: center;
-    font-size: 25px;
-    font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
-
-.size-choose{
-    margin-bottom: 45px;
-}
-
 .checkbox-agreement{
     width: 29px;
     height: 29px;
