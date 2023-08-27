@@ -7,8 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,8 +24,6 @@ public class UserEntity {
 
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;
-    private int height;
-    private int weight;
     private int stampCnt;
 
     private LocalDateTime createdAt;
@@ -50,8 +46,6 @@ public class UserEntity {
         this.password = requestDto.getPassword();
         this.phoneNumber = requestDto.getPhoneNumber();
         this.userRole = UserRole.USER;
-        this.height = requestDto.getHeight();
-        this.weight = requestDto.getWeight();
         this.stampCnt = 0;
     }
 

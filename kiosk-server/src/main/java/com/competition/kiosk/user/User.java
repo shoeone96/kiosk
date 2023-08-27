@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private UserRole userRole;
+    private int stampCnt;
     private LocalDateTime registeredAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
@@ -34,6 +35,7 @@ public class User implements UserDetails {
                 userEntity.getNickname(),
                 userEntity.getPassword(),
                 userEntity.getUserRole(),
+                userEntity.getStampCnt(),
                 userEntity.getCreatedAt(),
                 userEntity.getModifiedAt(),
                 userEntity.getDeletedAt()
