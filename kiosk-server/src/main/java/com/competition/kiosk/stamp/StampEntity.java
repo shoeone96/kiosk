@@ -1,5 +1,8 @@
 package com.competition.kiosk.stamp;
 
+import com.competition.kiosk.stamp.requestDto.AccumulationRequestDto;
+import com.competition.kiosk.stamp.requestDto.CouponChangeRequestDto;
+import com.competition.kiosk.stamp.requestDto.TimeChangeRequestDto;
 import com.competition.kiosk.user.UserEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +29,40 @@ public class StampEntity {
     private int totalCnt;
     @Enumerated(value = EnumType.STRING)
     private Usages usages;
+
+    private StampEntity(UserEntity user, TimeChangeRequestDto requestDto, int lastTotalCnt){
+        this.user = user;
+        this.changeCnt = requestDto.getChangeCnt();
+        this.registeredAt = LocalDateTime.now();
+        this.totalCnt = lastTotalCnt - changeCnt;
+        this.usages = Usages.VOLUNTEER_TIME;
+    }
+
+    public static StampEntity fromTimeRequestDto(UserEntity user, TimeChangeRequestDto requestDto, int lastTotalCnt){
+        return new StampEntity(user, requestDto, lastTotalCnt);
+    }
+
+    private StampEntity(UserEntity user, CouponChangeRequestDto requestDto, int lastTotalCnt){
+        this.user = user;
+        this.changeCnt = requestDto.getChangeCnt();
+        this.registeredAt = LocalDateTime.now();
+        this.totalCnt = lastTotalCnt - changeCnt;
+        this.usages = Usages.DISCOUNT_COUPON;
+    }
+
+    public static StampEntity fromCouponRequestDto(UserEntity user, CouponChangeRequestDto requestDto, int lastTotalCnt){
+        return new StampEntity(user, requestDto, lastTotalCnt);
+    }
+
+    private StampEntity(UserEntity user, AccumulationRequestDto requestDto, int lastTotalCnt){
+        this.user = user;
+        this.changeCnt = requestDto.getChangeCnt();
+        this.registeredAt = LocalDateTime.now();
+        this.totalCnt = lastTotalCnt + changeCnt;
+        this.usages = Usages.ACCUMULATION;
+    }
+
+    public static StampEntity fromAccumulationRequestDto(UserEntity user, AccumulationRequestDto requestDto, int lastTotalCnt){
+        return new StampEntity(user, requestDto, lastTotalCnt);
+    }
 }
