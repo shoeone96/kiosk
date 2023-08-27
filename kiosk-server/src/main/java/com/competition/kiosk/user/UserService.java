@@ -5,6 +5,7 @@ import com.competition.kiosk.exception.ErrorCode;
 import com.competition.kiosk.user.requestDto.UserLoginRequestDto;
 import com.competition.kiosk.user.requestDto.UserSignInRequestDto;
 import com.competition.kiosk.user.responseDto.UserJoinResponseDto;
+import com.competition.kiosk.user.responseDto.UserLoginResponseDto;
 import com.competition.kiosk.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +22,8 @@ public class UserService {
     private final BCryptPasswordEncoder encoder; // encoder 추가
     private final UserRepository userRepository;
 
-    public User loadUserByUserName(String nickname) {
-        return userRepository.findByNickname(nickname).map(User::fromEntity).orElseThrow(() ->
+    public User loadUserByUserName(int phoneNumber) {
+        return userRepository.findByPhoneNumber(phoneNumber).map(User::fromEntity).orElseThrow(() ->
                         new BaseException(ErrorCode.USER_NOT_FOUND));
     }
     public UserJoinResponseDto signIn(UserSignInRequestDto requestDto) {
@@ -30,7 +31,10 @@ public class UserService {
                 .ifPresent(name -> {
                     throw new BaseException(ErrorCode.DUPLICATED_USERNAME);
                 });
-        // TODO: 비밀번호 해싱 도입 예정
+        userRepository.findByPhoneNumber(requestDto.getPhoneNumber())
+                .ifPresent(name -> {
+                    throw new BaseException(ErrorCode.DUPLICATED_USERNAME);
+                });
         requestDto.hashing(encoder.encode(requestDto.getPassword()));
 
         UserEntity user = UserEntity.of(requestDto);
@@ -38,15 +42,16 @@ public class UserService {
         return UserJoinResponseDto.of(user);
     }
 
-    public String login(UserLoginRequestDto requestDto) {
+    public UserLoginResponseDto login(UserLoginRequestDto requestDto) {
         // id 검증
-        User user = loadUserByUserName(requestDto.getNickname());
+        User user = loadUserByUserName(requestDto.getPhoneNumber());
         // password 대조
         if (!encoder.matches(requestDto.getPassword(), user.getPassword())) {
             throw new BaseException(ErrorCode.INVALID_PASSWORD);
         }
 
         // 로그인 성공
-        return JwtTokenUtils.generateToken(requestDto.getNickname(), secretKey, expiredTimeMs);
+        String token =  JwtTokenUtils.generateToken(user.getUsername(), secretKey, expiredTimeMs);
+        return UserLoginResponseDto.of(token, user.getUsername(),user.getStampCnt());
     }
 }
