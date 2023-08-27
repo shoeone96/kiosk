@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import './input.css'
 import '../button.css'
@@ -8,15 +8,26 @@ import '../button.css'
 function Input() {
     
     let products = useSelector((state) => state.products);
-    let [sizes] = useState(['S', 'M', 'L']);
+    let [categories, setCategories] = useState([{type:'상의', status:false}, {type:'하의', status:false}, {type:'세트 의류', status:false}]);
     const totalCount = products.reduce((sum, product) => sum + product.count, 0);
+
+    useEffect(() =>{
+        products.map((product) =>{
+            categories.map((category) =>{
+                if(product.name === category.type) category.status = true;
+            })
+        })    
+        categories.map((category) =>{
+            console.log(category.type +" " + category.status);
+        })
+    })
 
     return (
         <body>
             <section className='input'>
                 <div className='input-grid-container'>
                     <div className='title'>
-                        조명이 켜진 투입구에 의류를 넣어주세요.
+                        의류 종류에 맞춰 투입구에 의류를 넣어주세요.
                     </div>
                     <div className='donation-count'>
                         <div className='product-arragement'>
@@ -37,9 +48,11 @@ function Input() {
                         </div>                        
                     </div>
                     <div className='donation-container'>
-                        {sizes.map((size) => (
+                        {categories.map((category) => (
                             <div className='container'>
-                                <div className='input-entrance'></div>
+                                <div 
+                                className = {category.status === true? 'input-entrance' : 'non-input-entrance'}
+                                ></div>
                             </div>
                         ))}
                     </div>

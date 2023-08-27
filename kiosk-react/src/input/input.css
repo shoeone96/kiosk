@@ -35,7 +35,7 @@
     border-radius: 30px;
     background-color: #F1F1F1;
     display: flex;
-    justify-content: center;
+    justify-content:baseline;
     align-items: center;
     margin-bottom: 15px;
     font-size: 20px;
@@ -44,7 +44,7 @@
 .product-arragement{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
 }
 
@@ -68,12 +68,19 @@
     align-items: center;
 }
 
-.input-entrance{
+.input-entrance,
+.non-input-entrance{
     width: 108px;
     height: 49px;
     border-radius: 10px;
     background-color: #000;
     margin: 13px 0 10px 0;
+    
+}
+.input-entrance{
+    border: 4px solid #2DE56E;
+}
+.non-input-entrance{
     border: 4px solid #585858;
 }
 
@@ -95,7 +102,7 @@
 }
 
 .total-count {
-    padding-right: 50px;
+    padding-right: 89px;
     text-align: right;
     color: #26A653;
     font-size: 30px;
