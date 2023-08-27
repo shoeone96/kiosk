@@ -4,6 +4,7 @@ import com.competition.kiosk.config.BaseResponse;
 import com.competition.kiosk.user.requestDto.UserLoginRequestDto;
 import com.competition.kiosk.user.requestDto.UserSignInRequestDto;
 import com.competition.kiosk.user.responseDto.UserJoinResponseDto;
+import com.competition.kiosk.user.responseDto.UserLoginResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/api/v1/users/login")
-    public BaseResponse<String> userLogin(@RequestBody UserLoginRequestDto requestDto){
+    public BaseResponse<UserLoginResponseDto> userLogin(@RequestBody UserLoginRequestDto requestDto){
         return BaseResponse.success(userService.login(requestDto));
     }
 }
