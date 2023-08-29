@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
+
 let products = createSlice({
     name: 'products',
     initialState : [],
@@ -34,15 +35,51 @@ let products = createSlice({
             if(selectedProduct.count === 1) {
                 return state.filter(product => product.id != selectedProduct.id)
             } else selectedProduct.count--;
+        },
+        productReset(state){
+            return [];
         }
     }
 })
 
-export let {addProduct, removeProduct, updateProduct, plusCount, minusCount} = products.actions;
+let categories = createSlice ({
+    name : 'categories',
+    initialState : [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '세트 의류', status: false }],
+    reducers : {
+        changeStatus(state, action){
+            const type = action.payload;
+            const index = state.findIndex(category => category.type === type);
+            const condition = state[index].status;
+            state[index].status = !condition;
+        },
+        categoriesReset(state){
+            return [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '세트 의류', status: false }];
+        }
+    }
+})
 
+let user = createSlice({
+    name: 'user',
+    initialState : { token:"", stampCnt:"" },
+    reducers : {
+        getInformation(state, action){
+            const [token, stampCnt] = action.payload;
+            state.token = token;
+            state.stampCnt = stampCnt;
+        },
+
+        userInfoReset(){
+            return { token:"", stampCnt:"" };
+        }
+    }
+})
+
+export let {addProduct, removeProduct, updateProduct, plusCount, minusCount, productReset} = products.actions;
+export let {changeStatus, categoriesReset} = categories.actions;
 
 export default configureStore({
     reducer: {
+        categories : categories.reducer,
         products: products.reducer
     }
 })

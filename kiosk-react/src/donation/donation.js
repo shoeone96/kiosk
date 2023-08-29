@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import '../button.css'
 import './donation.css'
-import { addProduct, removeProduct, updateProduct, plusCount, minusCount } from '../store/store';
+import { addProduct, removeProduct, updateProduct, plusCount, minusCount, changeStatus } from '../store/store';
 import { ReactComponent as Plus } from './add_black_24dp.svg';
 import { ReactComponent as Minus } from './remove_black_24dp.svg';
 import { ReactComponent as Cancel } from './cancel.svg';
@@ -16,6 +16,12 @@ function Donation() {
 
     function loadProduct(category, index) {
         dispatch(addProduct({ id: index, name: category, count: 1 }));
+        dispatch(changeStatus(category));
+    }
+
+    function minus(id, cnt){
+        dispatch(minusCount(id))
+        if(cnt == 1) dispatch(changeStatus);
     }
 
     return (
@@ -43,7 +49,7 @@ function Donation() {
                                 </div>
                                 <div className='selected-product-right-component'>
                                     <div>
-                                        <Minus onClick={() => dispatch(minusCount(product.id))}></Minus>
+                                        <Minus onClick={() => minus(product.id, product.count)}></Minus>
                                     </div>
                                     <div className='product-count'>
                                         <span>{product.count}</span>
