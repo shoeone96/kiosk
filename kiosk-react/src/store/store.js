@@ -44,7 +44,7 @@ let products = createSlice({
 
 let categories = createSlice ({
     name : 'categories',
-    initialState : [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '세트 의류', status: false }],
+    initialState : [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '기타 의류', status: false }],
     reducers : {
         changeStatus(state, action){
             const type = action.payload;
@@ -53,7 +53,7 @@ let categories = createSlice ({
             state[index].status = !condition;
         },
         categoriesReset(state){
-            return [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '세트 의류', status: false }];
+            return [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '기타 의류', status: false }];
         }
     }
 })
