@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class UserSignInRequestDto {
     private String nickname;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public void hashing(String hashedPassword) {
         this.password = hashedPassword;
