@@ -2,6 +2,8 @@ package com.competition.kiosk.user;
 
 import com.competition.kiosk.config.BaseException;
 import com.competition.kiosk.exception.ErrorCode;
+import com.competition.kiosk.stamp.StampEntity;
+import com.competition.kiosk.stamp.StampRepository;
 import com.competition.kiosk.user.requestDto.UserLoginRequestDto;
 import com.competition.kiosk.user.requestDto.UserSignInRequestDto;
 import com.competition.kiosk.user.responseDto.UserJoinResponseDto;
@@ -21,10 +23,16 @@ public class UserService {
     private Long expiredTimeMs;
     private final BCryptPasswordEncoder encoder; // encoder 추가
     private final UserRepository userRepository;
+    private final StampRepository stampRepository;
 
-    public User loadUserByUserName(int phoneNumber) {
-        return userRepository.findByPhoneNumber(phoneNumber).map(User::fromEntity).orElseThrow(() ->
+    public User loadUserByUserName(String nickname) {
+        return userRepository.findByNickname(nickname).map(User::fromEntity).orElseThrow(() ->
                         new BaseException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    public User loadUserByPhoneNumber(int phoneNumber) {
+        return userRepository.findByPhoneNumber(phoneNumber).map(User::fromEntity).orElseThrow(() ->
+                new BaseException(ErrorCode.USER_NOT_FOUND));
     }
     public UserJoinResponseDto signIn(UserSignInRequestDto requestDto) {
         userRepository.findByNickname(requestDto.getNickname())
@@ -39,12 +47,16 @@ public class UserService {
 
         UserEntity user = UserEntity.of(requestDto);
         userRepository.save(user);
+
+        // 추후 최초 가입 event 등 고려한 최초 가입 로직 작성, 조회 시 null 값 방지 포함
+        StampEntity stampEntity = StampEntity.enrollService(user);
+        stampRepository.save(stampEntity);
         return UserJoinResponseDto.of(user);
     }
 
     public UserLoginResponseDto login(UserLoginRequestDto requestDto) {
         // id 검증
-        User user = loadUserByUserName(requestDto.getPhoneNumber());
+        User user = loadUserByPhoneNumber(requestDto.getPhoneNumber());
         // password 대조
         if (!encoder.matches(requestDto.getPassword(), user.getPassword())) {
             throw new BaseException(ErrorCode.INVALID_PASSWORD);

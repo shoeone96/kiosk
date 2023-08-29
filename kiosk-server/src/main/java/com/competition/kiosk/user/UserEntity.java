@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private Long id;
     private String nickname;
     private String password;
@@ -49,6 +49,9 @@ public class UserEntity {
         this.stampCnt = 0;
     }
 
+    public void updateStampCnt(int updatedCnt){
+        this.stampCnt = updatedCnt;
+    }
     public static UserEntity of(UserSignInRequestDto requestDto){
         return new UserEntity(requestDto);
     }
