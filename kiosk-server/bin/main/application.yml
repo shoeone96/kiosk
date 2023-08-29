@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: kiosk
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/${MYSQL_DATABASE}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8??
+  sql:
+    init:
+      platform: mysql
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+jwt:
+  secret-key: ${JWT_KEY}
+  #    //30days
+  token:
+    expired-time-ms: ${EXPIRATION_TIME}
+
+
