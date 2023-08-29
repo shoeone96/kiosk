@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import { productReset, categoriesReset, userInfoReset } from '../store/store';
+import { useDispatch, useSelector} from 'react-redux'
 import './main.css'
 import '../button.css'
 
 
 function Main() {
-    const [username] =useState("동국대학교");
+    // const [username] =useState("동국대학교");
     const history = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    function resetAll() {
+        dispatch(productReset());
+        dispatch(categoriesReset());
+        dispatch(userInfoReset());
+    }
     function logout(){
+        resetAll();
         history("/");
     }
 
@@ -15,7 +25,7 @@ function Main() {
         <body>
             <div className='main'>
                 <section className='main-title'>
-                    <span style={{ textDecoration: 'underline' }}>{username}</span>님, 안녕하세요.
+                    <span style={{ textDecoration: 'underline' }}>{user.nickname}</span>님, 안녕하세요.
                 </section>
                 <section className='main-buttons'>
                     <Link to="/stamp">
