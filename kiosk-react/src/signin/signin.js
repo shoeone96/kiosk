@@ -47,19 +47,17 @@ function Signin() {
             alert("비밀번호는 4자리 숫자로 입력해주세요.");
             setPassword("");
         } else {
-            // const phoneNumberWithoutDash = phoneNumber.replace(/-/g, ''); // '-' 제거
-            // const validPhoneNumber = phoneNumberWithoutDash.substring(0, 11); // 최대 11자리로 고정
-            // axios.post("http://localhost:8080/api/v1/users/join",
-            //     {
-            //         nickname: nickname,
-            //         password: password,
-            //         phoneNumber: validPhoneNumber,
-            //         size: selectedSize
-            //     })
-            //     .then(console.log("요청에 성공했습니다."));
-
-            alert("회원가입이 완료되었습니다.")
-            history("/login")
+            axios.post("http://43.202.49.6/api/v1/users/join",
+                {
+                    nickname: nickname,
+                    password: password,
+                    phoneNumber: phoneNumber,
+                })
+                .then(() =>
+                    alert("회원가입이 완료되었습니다.")
+                );
+                history("/login");
+            
             // TODO: 서버 전송 시 작성 로직
         }
     };
