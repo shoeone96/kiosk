@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect } from 'react';
 import { useDispatch} from 'react-redux'
-import { productReset, categoriesReset } from '../store/store';
+import { productReset, categoriesReset, userInfoReset } from '../store/store';
 import './end.css'
 import '../button.css'
 
@@ -11,9 +11,13 @@ function End() {
     const history = useNavigate();
     let dispatch = useDispatch();
 
-    useEffect(() => {
+    function resetAll() {
         dispatch(productReset());
         dispatch(categoriesReset());
+        dispatch(userInfoReset());
+    }
+    useEffect(() => {
+        resetAll();
         const timeout = setTimeout(() => {
             history("/");
         }, 5000); 
