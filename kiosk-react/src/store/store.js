@@ -60,26 +60,29 @@ let categories = createSlice ({
 
 let user = createSlice({
     name: 'user',
-    initialState : { token:"", stampCnt:"" },
+    initialState : {nickname : "", token : "", totalStampCnt:""},
     reducers : {
-        getInformation(state, action){
-            const [token, stampCnt] = action.payload;
-            state.token = token;
-            state.stampCnt = stampCnt;
+        getInformation:(state, action) => {
+            state.nickname = action.payload.nickname;
+            state.token = action.payload.token;
+            state.totalStampCnt = action.payload.totalStampCnt;
         },
-
-        userInfoReset(){
-            return { token:"", stampCnt:"" };
+        userInfoReset: (state) =>{
+            state.nickname = "";
+            state.token = "";
+            state.totalStampCnt = "";
         }
     }
 })
 
 export let {addProduct, removeProduct, updateProduct, plusCount, minusCount, productReset} = products.actions;
 export let {changeStatus, categoriesReset} = categories.actions;
+export let {getInformation, userInfoReset} = user.actions;
 
 export default configureStore({
     reducer: {
         categories : categories.reducer,
-        products: products.reducer
+        products: products.reducer,
+        user: user.reducer
     }
 })

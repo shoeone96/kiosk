@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 // 요청 대마다 검증하는 필터
@@ -24,53 +25,41 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private final String key;
+    private final String secretKey;
     private final UserService userService;
-
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
 
         // 인증과 관련된 Header를 받아온다.
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-        // header 에 유효한 값이 없을 때
-        if(header == null || !header.startsWith("Bearer ")){
-            log.error("Error occurs while getting header. header is null or invalid");
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        // header 가 정상적으로 있는 경우
-        try{
-            final String token = header.split(" ")[1].trim();
-
-            //Todo : check token is valid
-            if(JwtTokenUtils.isExpired(token, key)){
-                log.error("key is expired");
-                filterChain.doFilter(request, response);
+        final String token;
+        try {
+            if (header == null || !header.startsWith("Bearer ")) {
+                log.error("Authorization Header does not start with Bearer {}", request.getRequestURI());
+                chain.doFilter(request, response);
                 return;
+            } else {
+                token = header.split(" ")[1].trim();
             }
 
-            //Todo : get userName from token
-            String userName = JwtTokenUtils.getUserName(token, key);
+            String userName = JwtTokenUtils.getUserName(token, secretKey);
+            User userDetails = userService.loadUserByUserName(userName);
 
-
-            //Todo : check the userName is valid
-            User user = userService.loadUserByUserName(userName);
-            // 다시 request에 넣어서 controller로 보내주는 부분
-            // 인증된 유저 정보를 넣어준다.
-            // principal(누구), credentials(자격), authorities(권한)
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                    // Todo
-                    user, null, user.getAuthorities());
-            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request ));
-            // 넣어준 유저 정보를 다시 넣어준다.
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);  // request 정보 함께 전달
-        } catch (RuntimeException e){
-            log.error("Error occurs while validating {}", e.toString());
-            filterChain.doFilter(request, response);
+            if (!JwtTokenUtils.validate(token, userDetails.getUsername(), secretKey)) {
+                chain.doFilter(request, response);
+                return;
+            }
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                    userDetails, null,
+                    userDetails.getAuthorities()
+            );
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch (RuntimeException e) {
+            chain.doFilter(request, response);
             return;
         }
 
-        filterChain.doFilter(request, response);
+        chain.doFilter(request, response);
     }
 }

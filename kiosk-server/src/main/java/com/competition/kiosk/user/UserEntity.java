@@ -20,7 +20,7 @@ public class UserEntity {
     private Long id;
     private String nickname;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Enumerated(value = EnumType.STRING)
     private UserRole userRole;

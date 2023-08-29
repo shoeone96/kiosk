@@ -30,7 +30,7 @@ public class UserService {
                         new BaseException(ErrorCode.USER_NOT_FOUND));
     }
 
-    public User loadUserByPhoneNumber(int phoneNumber) {
+    public User loadUserByPhoneNumber(String phoneNumber) {
         return userRepository.findByPhoneNumber(phoneNumber).map(User::fromEntity).orElseThrow(() ->
                 new BaseException(ErrorCode.USER_NOT_FOUND));
     }
