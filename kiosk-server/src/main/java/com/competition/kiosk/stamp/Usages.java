@@ -1,5 +1,5 @@
 package com.competition.kiosk.stamp;
 
 public enum Usages {
-    ACCUMULATION, DISCOUNT_COUPON, VOLUNTEER_TIME
+    ENROLLMENT, ACCUMULATION, DISCOUNT_COUPON, VOLUNTEER_TIME
 }

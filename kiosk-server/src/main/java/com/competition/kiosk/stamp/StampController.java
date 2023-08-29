@@ -1,6 +1,8 @@
 package com.competition.kiosk.stamp;
 
 import com.competition.kiosk.config.BaseResponse;
+import com.competition.kiosk.stamp.requestDto.AccumulationRequestDto;
+import com.competition.kiosk.stamp.requestDto.CouponChangeRequestDto;
 import com.competition.kiosk.stamp.requestDto.TimeChangeRequestDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,18 @@ public class StampController {
     @PostMapping("api/v1/stamps/time")
     public BaseResponse<Void> changeToTime(Authentication authentication, @RequestBody TimeChangeRequestDto requestDto){
         stampService.changeToTime(authentication.getName(), requestDto);
+        return BaseResponse.success();
+    }
+
+    @PostMapping("api/v1/stamps/coupon")
+    public BaseResponse<Void> changeToCoupon(Authentication authentication, @RequestBody CouponChangeRequestDto requestDto){
+        stampService.changeToCoupon(authentication.getName(), requestDto);
+        return BaseResponse.success();
+    }
+
+    @PostMapping("api/v1/stamps/accumulate")
+    public BaseResponse<Void> changeToTime(Authentication authentication, @RequestBody AccumulationRequestDto requestDto){
+        stampService.saveStamp(authentication.getName(), requestDto);
         return BaseResponse.success();
     }
 }
