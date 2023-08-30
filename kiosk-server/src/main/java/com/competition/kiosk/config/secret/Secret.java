@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Getter
 public class Secret {
 
-    @Value("${jwt.key}")
+    @Value("${jwt.secret-key}")
     private String JWT_SECRET_KEY;
 
 }
