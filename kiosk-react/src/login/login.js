@@ -19,8 +19,8 @@ function Login() {
 
     function handleLogin() { 
         axios.post("http://43.202.49.6:8080/api/v1/users/login",
-        // axios.post("http://localhost:8080/api/v1/users/login",
-        {phoneNumber : phoneNumber, password : password}).then((res) => {
+        {phoneNumber : phoneNumber, password : password},
+        { withCredentials: true }).then((res) => {
             if(res.data.resultCode === "SUCCESS"){
                 dispatch(getInformation(res.data.result));
                 console.log(user);
