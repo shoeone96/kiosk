@@ -53,21 +53,5 @@ public class AuthenticationConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(new JwtTokenFilter(secretKey, userService), UsernamePasswordAuthenticationFilter.class);
     }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
-        config.setAllowedOrigins(List.of("http://43.202.49.6:3000"));
-        config.setAllowedOrigins(List.of("http://43.202.49.6"));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("*"));
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
-    }
+    
 }
