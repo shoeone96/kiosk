@@ -1,37 +1,20 @@
 version: '3'
 
 services:
-  database:
-    container_name: mysql_db
-    image: mysql/mysql-server:5.7
-    restart: always
-    env_file:
-      - ./kiosk-server/.env
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./kiosk-server/./mysql/conf.d:/etc/mysql/conf.d # MySQL 설정 파일 위치
-    command:
-      - "mysqld"
-      - "--character-set-server=utf8mb4"
-      - "--collation-server=utf8mb4_unicode_ci"
-
   app:
     container_name: kiosk-server
     restart: always
     build:
       context: ./kiosk-server
       dockerfile: Dockerfile
+    env_file:
+      - .env
     ports:
       - "8080:8080"
-    env_file:
-      - ./kiosk-server/.env
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/${MYSQL_DATABASE}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    depends_on:
-      - database
+      SPRING_DATASOURCE_URL: jdbc:mysql://${DATASOURCE_HOST}:3306/${MYSQL_DATABASE}
+      SPRING_DATASOURCE_USERNAME: ${DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DATASOURCE_PASSWORD}
   
   web:
     container_name: kiosk-react
