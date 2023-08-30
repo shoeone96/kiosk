@@ -16,7 +16,7 @@ function Input() {
 
     function accumulate() {
         axios({
-            url: 'http://43.202.49.6:8080/api/v1/stamps/accumulate',
+            url: 'http://43.202.49.6/api/v1/stamps/accumulate',
             // url: 'http://localhost:8080/api/v1/stamps/accumulate',
             method: 'POST',
             headers: {
