@@ -53,10 +53,12 @@ function Signin() {
                     password: password,
                     phoneNumber: phoneNumber,
                 })
-                .then(() =>
-                    alert("회원가입이 완료되었습니다.")
-                );
-                history("/login");
+                .then(() =>{
+                    alert("회원가입이 완료되었습니다.");
+                    history("/login");}
+                ).catch(
+                alert("중복되는 닉네임 혹은 아이디입니다."));
+                
             
             // TODO: 서버 전송 시 작성 로직
         }
