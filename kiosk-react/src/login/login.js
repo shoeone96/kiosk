@@ -18,7 +18,8 @@ function Login() {
     const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0];
 
     function handleLogin() { 
-        axios.post("http://43.202.49.6/api/v1/users/login",
+        axios.post("http://43.202.49.6:8080/api/v1/users/login",
+        // axios.post("http://localhost:8080/api/v1/users/login",
         {phoneNumber : phoneNumber, password : password}).then((res) => {
             if(res.data.resultCode === "SUCCESS"){
                 dispatch(getInformation(res.data.result));

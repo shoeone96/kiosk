@@ -30,7 +30,7 @@ function Stamp() {
             alert("1개 이상의 스탬프를 이용해주세요");
         } else {
             axios({
-                url: 'http://43.202.49.6/api/v1/stamps/coupon',
+                url: 'http://43.202.49.6:8080/api/v1/stamps/coupon',
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function Stamp() {
         } else {
 
             axios({
-                url: 'http://43.202.49.6/api/v1/stamps/time',
+                url: 'http://43.202.49.6:8080/api/v1/stamps/time',
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
