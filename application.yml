@@ -1,7 +1,11 @@
 spring:
   application:
     name: kiosk
-
+  cors:
+    allowed-origins: "*"
+    allowed-methods: GET, POST, PUT, DELETE
+    allowed-headers: *
+    allow-credentials: true
   datasource:
     url: jdbc:mysql://${DATASOURCE_HOST}:3306/${MYSQL_DATABASE}
     username: ${DATASOURCE_USERNAME}
