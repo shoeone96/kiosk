@@ -7,8 +7,8 @@
 
 
 ### 기술스택:
-- Front-End: React
-- Back-End: Springboot
+- Front-End: React, Redux
+- Back-End: Springboot, SpringSecurity, SpringDataJpa
 - Database: RDS MySQL
 - DevOps: AWS EC2 ubuntu, Docker, Nginx
 
