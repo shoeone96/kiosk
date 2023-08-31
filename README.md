@@ -7,7 +7,13 @@
 
 
 ### 기술스택:
-- Front-End: React
-- Back-End: Springboot
-- Database: MySQL
-- DevOps: AWS Linux(ubuntu), Docker
+- Front-End: React, Redux
+- Back-End: Springboot, SpringSecurity, SpringDataJpa
+- Database: RDS MySQL
+- DevOps: AWS EC2 ubuntu, Docker, Nginx
+
+
+### 서비스 아키텍처:
+<img width="1547" alt="Kiosk_Architecture diagram" src="https://github.com/shoeone96/kiosk/assets/85065626/d57d6067-f7ad-4ce1-8995-7b6983823673">
+
+
