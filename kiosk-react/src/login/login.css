@@ -43,12 +43,13 @@ body > .login{
 }
 
 .login-phone-number-input {
+    display:inline-block;
     background: #F1F1F1;
     border-radius: 5px;
     border: none;
     width: 360px;
     height: 62px;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
     text-align: center;
     margin-bottom: 15px;
