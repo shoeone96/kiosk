@@ -11,3 +11,7 @@
 - Back-End: Springboot
 - Database: MySQL
 - DevOps: AWS Linux(ubuntu), Docker
+
+
+### 서비스 아키텍처:
+![Kiosk_Architecture diagram](https://github.com/shoeone96/kiosk/assets/85065626/cffbda88-ba5d-4a5b-a905-cf2c1848b730)
