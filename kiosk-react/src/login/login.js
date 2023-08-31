@@ -114,7 +114,7 @@ function Login() {
                                 )}
                             </div>
                         ))}
-                        <div>
+                        <div className='clear-button-box'>
                             <button className='clear-button' >
                                 <Arrow onClick={handleClearClick}></Arrow>
                             </button>
