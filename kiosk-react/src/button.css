@@ -68,6 +68,9 @@
     border: none;
     background-color: #F5F5F5;
     margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .signin-cancel-button {
