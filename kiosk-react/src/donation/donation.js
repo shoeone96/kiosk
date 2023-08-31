@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import '../button.css'
 import './donation.css'
-import { addProduct, removeProduct, updateProduct, plusCount, minusCount, changeStatus } from '../store/store';
+import { addProduct, removeProduct, updateProduct, plusCount, minusCount, falseStatus, trueStatus, cancelCount } from '../store/store';
 import { ReactComponent as Plus } from './add_black_24dp.svg';
 import { ReactComponent as Minus } from './remove_black_24dp.svg';
 import { ReactComponent as Cancel } from './cancel.svg';
@@ -16,13 +16,17 @@ function Donation() {
 
     function loadProduct(category, index) {
         dispatch(addProduct({ id: index, name: category, count: 1 }));
-        dispatch(changeStatus(category));
+        dispatch(trueStatus(category));
     }
 
-    function minus(id, cnt){
-        dispatch(minusCount(id))
-        console.log()
-        if(cnt == 0) dispatch(changeStatus);
+    function minus(category, id, cnt){
+        dispatch(minusCount(id));
+        if(cnt == 1) dispatch(falseStatus(category));
+    }
+
+    function cancelProduct(category, id){
+        dispatch(removeProduct(id));
+        dispatch(falseStatus(category));
     }
 
     return (
@@ -45,12 +49,12 @@ function Donation() {
                         {products.map((product) => (
                             <div className='selected-product'>
                                 <div className='selected-product-left-component'>
-                                    <Cancel onClick={() => dispatch(removeProduct(product.id))}></Cancel>
+                                    <Cancel onClick={() => cancelProduct(product.name, product.id)}></Cancel>
                                     <span className='product-name'>{product.name}</span>
                                 </div>
                                 <div className='selected-product-right-component'>
                                     <div>
-                                        <Minus onClick={() => minus(product.id, product.count)}></Minus>
+                                        <Minus onClick={() => minus(product.name, product.id, product.count)}></Minus>
                                     </div>
                                     <div className='product-count'>
                                         <span>{product.count}</span>

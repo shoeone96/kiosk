@@ -24,6 +24,11 @@ let products = createSlice({
                 state[productIndex] = {id, name, count}
             }
         },
+        cancelCount(state, action){
+            const productIndex = state.findIndex(product => product.id === action.payload);
+            const product = state[productIndex];
+            product.count = 0;
+        },
         plusCount(state, action){
             const productIndex = state.findIndex(product => product.id === action.payload);
             const product = state[productIndex];
@@ -46,11 +51,15 @@ let categories = createSlice ({
     name : 'categories',
     initialState : [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '기타 의류', status: false }],
     reducers : {
-        changeStatus(state, action){
+        falseStatus(state, action){
             const type = action.payload;
             const index = state.findIndex(category => category.type === type);
-            const condition = state[index].status;
-            state[index].status = !condition;
+            state[index].status = false;
+        },
+        trueStatus(state, action){
+            const type = action.payload;
+            const index = state.findIndex(category => category.type === type);
+            state[index].status = true;
         },
         categoriesReset(state){
             return [{ type: '상의', status: false }, { type: '하의', status: false }, { type: '기타 의류', status: false }];
@@ -75,8 +84,8 @@ let user = createSlice({
     }
 })
 
-export let {addProduct, removeProduct, updateProduct, plusCount, minusCount, productReset} = products.actions;
-export let {changeStatus, categoriesReset} = categories.actions;
+export let {addProduct, removeProduct, updateProduct, cancelCount, plusCount, minusCount, productReset} = products.actions;
+export let {falseStatus, trueStatus, categoriesReset} = categories.actions;
 export let {getInformation, userInfoReset} = user.actions;
 
 export default configureStore({
