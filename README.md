@@ -14,5 +14,6 @@
 
 
 ### 서비스 아키텍처:
-![Kiosk_Architecture diagram](https://github.com/shoeone96/kiosk/assets/85065626/16635213-2f70-4aa4-bc31-0c879d57fa7d)
+<img width="1547" alt="Kiosk_Architecture diagram" src="https://github.com/shoeone96/kiosk/assets/85065626/d57d6067-f7ad-4ce1-8995-7b6983823673">
+
 
