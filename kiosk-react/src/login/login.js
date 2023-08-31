@@ -28,7 +28,7 @@ function Login() {
             } else{
                 alert("로그인 정보가 잘못되었습니다.");
             }
-        })
+        }).catch((res) => console.log(res));
     }
 
 
