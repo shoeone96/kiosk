@@ -41,7 +41,7 @@ public class UserService {
                 });
         userRepository.findByPhoneNumber(requestDto.getPhoneNumber())
                 .ifPresent(name -> {
-                    throw new BaseException(ErrorCode.DUPLICATED_USERNAME);
+                    throw new BaseException(ErrorCode.PHONE_NUMBER);
                 });
         requestDto.hashing(encoder.encode(requestDto.getPassword()));
 

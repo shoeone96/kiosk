@@ -53,11 +53,16 @@ function Signin() {
                     password: password,
                     phoneNumber: phoneNumber,
                 })
-                .then(() =>{
-                    alert("회원가입이 완료되었습니다.");
-                    history("/login");}
-                ).catch(
-                alert("중복되는 닉네임 혹은 번호입니다."));
+                .then((res) =>{
+                    if(res.data.resultCode === "SUCCESS"){
+                        alert("회원가입이 완료되었습니다.");
+                        history("/login");
+                    } else if(res.data.resultCode === "DUPLICATED_USERNAME"){
+                        alert("중복된 닉네임입니다.");
+                    } else if(res.data.resultCode === "PHONE_NUMBER"){
+                        alert("이미 가입한 핸드폰 번호입니다.");
+                    }
+                });
                 
             
             // TODO: 서버 전송 시 작성 로직
