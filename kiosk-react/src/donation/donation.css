@@ -86,6 +86,9 @@
     height: 28px;
     border-radius: 50%;
     background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .donation-categories{
     display: flex;

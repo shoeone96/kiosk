@@ -12,9 +12,12 @@ import TimeReward from './timeReward/timeReward'
 import DiscountReward from './discountReward/discountReward'
 import Input from './input/input'
 import Home from './home/home'
+import { Reset } from 'styled-reset'
 
 function App() {
   return (
+    <React.Fragment>
+    <Reset />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -27,6 +30,7 @@ function App() {
       <Route path="/discount-reward" element={<DiscountReward />} />
       <Route path="/input" element={<Input />} />
     </Routes>
+    </React.Fragment>
   );
 }
 

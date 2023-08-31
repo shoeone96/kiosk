@@ -21,6 +21,7 @@ function Donation() {
 
     function minus(id, cnt){
         dispatch(minusCount(id))
+        console.log()
         if(cnt == 0) dispatch(changeStatus);
     }
 
