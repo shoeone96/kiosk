@@ -44,6 +44,10 @@
 }
 
 .number-button {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 62px;
     height: 62px;
     background: #26A653;
