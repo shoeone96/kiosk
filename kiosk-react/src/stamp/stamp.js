@@ -18,16 +18,16 @@ function Stamp() {
 
 
     function minusUseStamp() {
-        if (useStamp > 0) setUseStamp(stamp => stamp - 1);
+        if (useStamp >= 10) setUseStamp(stamp => stamp - 10);
     }
 
     function plusUseStamp() {
-        if (useStamp < nowStamp) setUseStamp(stamp => stamp + 1);
+        if (useStamp <= nowStamp - 10) setUseStamp(stamp => stamp + 10);
     }
 
     function changeToCoupon() {
         if(useStamp === 0){
-            alert("1개 이상의 스탬프를 이용해주세요");
+            alert("10개 이상의 스탬프를 이용해주세요");
         } else {
             axios({
                 url: 'http://43.202.49.6/api/v1/stamps/coupon',
