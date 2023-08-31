@@ -36,6 +36,12 @@
     margin-top: 20px;
 }
 
+@media screen and (max-height: 900px) { 
+    .logout-button {
+        width: 490px; 
+    }
+}
+
 .signin-button {
     width: 360px;
     height: 62px;
