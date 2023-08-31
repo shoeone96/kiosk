@@ -66,6 +66,9 @@
 }
 
 .clear-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 62px;
     height: 62px;
     border-radius: 5px;

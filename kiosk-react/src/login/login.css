@@ -62,12 +62,6 @@ body > .login{
     }
 }
 
-.clear-button-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .no-number{
     width: 62px;

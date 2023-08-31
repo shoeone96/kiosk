@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './login.css'
 import '../button.css'
 import logo from './logo.png'
-import { useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ReactComponent as Arrow } from './Arrow.svg'
 import { getInformation } from '../store/store';
 import axios from 'axios';
@@ -17,18 +17,18 @@ function Login() {
     const [password, setPassword] = useState('');
     const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0];
 
-    function handleLogin() { 
+    function handleLogin() {
         axios.post("http://43.202.49.6/api/v1/users/login",
-        {phoneNumber : phoneNumber, password : password},
-        { withCredentials: true }).then((res) => {
-            if(res.data.resultCode === "SUCCESS"){
-                dispatch(getInformation(res.data.result));
-                console.log(user);
-                history("/main");
-            } else{
-                alert("로그인 정보가 잘못되었습니다.");
-            }
-        }).catch((res) => console.log(res));
+            { phoneNumber: phoneNumber, password: password },
+            { withCredentials: true }).then((res) => {
+                if (res.data.resultCode === "SUCCESS") {
+                    dispatch(getInformation(res.data.result));
+                    console.log(user);
+                    history("/main");
+                } else {
+                    alert("로그인 정보가 잘못되었습니다.");
+                }
+            }).catch((res) => console.log(res));
     }
 
 
@@ -65,7 +65,7 @@ function Login() {
         }
     }
 
-    function goHome(){
+    function goHome() {
         history("/");
     }
 
@@ -114,10 +114,8 @@ function Login() {
                                 )}
                             </div>
                         ))}
-                        <div className='clear-button-box'>
-                            <button className='clear-button' >
-                                <Arrow onClick={handleClearClick}></Arrow>
-                            </button>
+                        <div className='clear-button' >
+                            <Arrow onClick={handleClearClick}></Arrow>
                         </div>
                     </div>
                 </div>
