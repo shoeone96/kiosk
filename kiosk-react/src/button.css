@@ -29,7 +29,7 @@
 }
 
 .logout-button {
-    width: 480px;
+    width: 486px;
     height: 50px;
     font-size: 20px;
     font-weight: 700;
@@ -68,7 +68,8 @@
     border: none;
     background-color: #F5F5F5;
     margin: 15px;
-    text-align: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -100,6 +101,14 @@
     text-align: center;
     font-size: 25px;
     font-weight: 700;
+}
+
+@media screen and (max-height: 900px) { 
+    .stamp-check-button,
+    .donation-button {
+        width: 215px;
+        height: 138px;  
+    }
 }
 
 .stamp-check-button{

@@ -70,6 +70,13 @@
     margin-bottom: 10px;
 }
 
+@media screen and (max-height: 900px) { 
+    .volunteer-input {
+        width: 439px;
+        height: 51px;  
+    }
+}
+
 .arrow-space{
     margin-left: 45px;
     margin-right: 45px;
