@@ -1,6 +1,6 @@
 # kiosk
-<img src="https://github.com/shoeone96/kiosk/assets/85065626/693e974c-591e-4c20-8730-57782ffdf1ea" width="500" />
-<img src="https://github.com/shoeone96/kiosk/assets/85065626/8d4030d7-91cb-47df-9f65-8d3d3c33d864" width="500" />
+<img src="https://github.com/shoeone96/kiosk/assets/85065626/693e974c-591e-4c20-8730-57782ffdf1ea" width="400" />
+<img src="https://github.com/shoeone96/kiosk/assets/85065626/8d4030d7-91cb-47df-9f65-8d3d3c33d864" width="400" />
 
 ### 의류 기부 플랫폼 옷깃의 키오스크 화면 및 서버 구성
 - 기획 배경: 꾸준히 증가하는 의류 소비량과 폐의류량 추세에 맞춰 입지 않는 옷을 기부할 수 있는 시스템을 구축하고자 하였다.  
