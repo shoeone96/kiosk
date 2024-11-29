@@ -20,8 +20,7 @@
 - Database: RDS MySQL
 - DevOps: AWS EC2 ubuntu, Docker, Nginx
 
-
 ### 서비스 아키텍처:
 <img width="1547" alt="Kiosk_Architecture diagram" src="https://github.com/shoeone96/kiosk/assets/85065626/d57d6067-f7ad-4ce1-8995-7b6983823673">
 
-
+### 수상: 동국대학교 캡스톤디자인 밸류업 장려상 수상
