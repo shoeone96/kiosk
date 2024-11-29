@@ -8,7 +8,12 @@
 - 키오스크의 역할: 수거함 화면으로 비치되어 대학교 학생 회원 등록을 통해 의류 기부 시 스탬프를 적립 받아 봉사 시간 등을 받을 수 있게 만들어준다.  
 - 개발 목표: 이 서비스의 수요를 확인하기 위한 MVP 모델 개발을 목표로 하고 있다.  
 
-
+### 상세 내용
+- **React & Spring 기반 키오스크 화면 개발 및 서버 개발**
+    - 의류 기부함에 부착될 MVP 모델의 키오스크 화면 및 서버 개발
+    - 아이패드 에서 UI가 깨지지 않도록 CSS media query를 이용한 UI 최적화
+- **단일 클라우드 서버 내 docker compose 기반으로 서버 구축**
+  
 ### 기술스택:
 - Front-End: React, Redux
 - Back-End: Springboot, SpringSecurity, SpringDataJpa
